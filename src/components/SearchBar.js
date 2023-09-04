@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import { SlMagnifier } from "react-icons/sl";
 
 const SearchBar = () => {
+  const searchRef = useRef();
+
   const searchHandler = (event) => {
-    console.log("searching");
+    event.preventDefault();
+
+    let user = searchRef.current.value;
+    console.log(user);
+
+    searchRef.current.value = "";
   };
 
   return (
@@ -15,6 +22,7 @@ const SearchBar = () => {
           type="text"
           name="search"
           placeholder="Search for Github user"
+          ref={searchRef}
           className="bg-gray-100 text-gray-700 w-[80%] h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
         />
         <button type="submit" className="-ml-12" onClick={searchHandler}>
