@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const UsersRepo = ({ usersRepo }) => {
   let repoNumber;
@@ -25,7 +26,15 @@ const UsersRepo = ({ usersRepo }) => {
         />
         <div className="flex-grow pl-4">
           <p className="font-bold text-lg">{usersRepo.data[0].owner.login}</p>
-          <span className="text-xs">{repoNumber}</span>
+          <span className="block text-xs">{repoNumber}</span>
+          <Link
+            href={usersRepo.data[0].owner.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pt-2 text-xs font-medium italic cursor-pointer"
+          >
+            Check on Github
+          </Link>
         </div>
       </div>
     </div>
