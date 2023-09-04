@@ -1,9 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+import axios from "axios";
 
 import { SlMagnifier } from "react-icons/sl";
 
 const SearchBar = () => {
   const searchRef = useRef();
+  const [responseMsg, setResponseMsg] = useState("");
 
   const searchHandler = (event) => {
     event.preventDefault();
@@ -11,7 +13,26 @@ const SearchBar = () => {
     let user = searchRef.current.value;
     console.log(user);
 
+    if (user.trim().length === 0) {
+      setResponseMsg("Invalid expression. The search cannot be empty");
+    } else {
+      searchGithubUser(user);
+    }
+
     searchRef.current.value = "";
+  };
+
+  const searchGithubUser = (user) => {
+    axios.get(`/api/users/get/${user}`).then(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+        console.log("odpp " + error.response.data);
+        setResponseMsg(error.response.data);
+      }
+    );
   };
 
   return (
@@ -21,7 +42,7 @@ const SearchBar = () => {
         <input
           type="text"
           name="search"
-          placeholder="Search for Github user"
+          placeholder="Search for a Github user"
           ref={searchRef}
           className="bg-gray-100 text-gray-700 w-[80%] h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
         />
@@ -29,6 +50,13 @@ const SearchBar = () => {
           <SlMagnifier size={30} className="text-gray-600" />
         </button>
       </div>
+
+      {/* Response Msg */}
+      {responseMsg && (
+        <p className="w-[60%] mx-auto text-xl font-bold italic text-rose-950 text-center pt-8">
+          {responseMsg}
+        </p>
+      )}
     </div>
   );
 };
