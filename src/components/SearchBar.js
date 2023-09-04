@@ -32,6 +32,14 @@ const SearchBar = () => {
       (response) => {
         console.log(response);
         setUsersRepo(response);
+        // adding to localStorage
+        const searchHistoryList = [];
+        searchHistoryList.push(response.data[0].owner.login);
+
+        const searchHistoryJSON = JSON.stringify(searchHistoryList);
+
+        localStorage.setItem("searchHistory", searchHistoryJSON);
+        // end of localStorage
       },
       (error) => {
         console.log(error);
