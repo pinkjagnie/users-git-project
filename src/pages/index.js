@@ -3,6 +3,8 @@ import { Inter } from "@next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
+import SearchBar from "@/components/SearchBar";
+
 export default function Home() {
   return (
     <>
@@ -13,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <p>Hi</p>
+        <SearchBar />
       </main>
     </>
   );
