@@ -28,6 +28,7 @@ const SearchBar = () => {
   };
 
   const searchGithubUser = (user) => {
+    setResponseMsg("");
     axios.get(`/api/users/get/${user}`).then(
       (response) => {
         console.log(response);
