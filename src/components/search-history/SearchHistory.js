@@ -22,9 +22,9 @@ const SearchHistory = () => {
           Search history is empty
         </p>
       ) : (
-        searchArray.map((searchPoint) => {
+        searchArray.map((searchPoint, index) => {
           return (
-            <div key={searchPoint} className="flex items-center">
+            <div key={index} className="flex items-center">
               <TbPoint />
               {searchPoint}
             </div>
