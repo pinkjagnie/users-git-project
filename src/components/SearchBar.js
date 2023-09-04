@@ -16,7 +16,6 @@ const SearchBar = () => {
     event.preventDefault();
 
     let user = searchRef.current.value;
-    console.log(user);
 
     if (user.trim().length === 0) {
       setResponseMsg("Invalid expression. The search cannot be empty");
@@ -31,7 +30,6 @@ const SearchBar = () => {
     setResponseMsg("");
     axios.get(`/api/users/get/${user}`).then(
       (response) => {
-        console.log(response);
         setUsersRepo(response);
 
         // adding to localStorage
@@ -49,11 +47,8 @@ const SearchBar = () => {
           JSON.stringify(searchHistoryList)
         );
         // end of localStorage
-        console.log(searchHistoryList);
       },
       (error) => {
-        console.log(error);
-        console.log("odpp " + error.response.data);
         setResponseMsg(error.response.data);
       }
     );

@@ -11,9 +11,6 @@ const SearchHistory = () => {
     const retrievedSearchHistory = localStorage.getItem("searchHistory");
     const searchHistoryArray = JSON.parse(retrievedSearchHistory);
 
-    console.log("LOCAAAAAAAAAAAAAL ARAAAAAAAAAAAY");
-    console.log(searchHistoryArray);
-
     setSearchArray(searchHistoryArray);
     // end of localStorage
   }, []);

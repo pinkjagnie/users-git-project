@@ -7,8 +7,6 @@ export default async function handler(req, res) {
 
   const { slug } = req.query;
 
-  console.log("slaaaaaaaaaaaaaaaaaaaaaag  " + slug);
-
   const regex = /\s/;
 
   if (regex.test(slug)) {
@@ -21,7 +19,6 @@ export default async function handler(req, res) {
       res.status(200).json(user);
     },
     (error) => {
-      console.log(error);
       res.status(404).send("No such user found. Please try again");
     }
   );
