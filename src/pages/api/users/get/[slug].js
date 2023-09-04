@@ -13,20 +13,6 @@ export default async function handler(req, res) {
     return res.status(400).send("Invalid expression. Please try again");
   }
 
-  // adding to localStorage
-  const searchHistoryList = [];
-  searchHistoryList.push(slug);
-
-  const searchHistoryJSON = JSON.stringify(searchHistoryList);
-
-  localStorage.setItem("searchHistory", searchHistoryJSON);
-
-  const retrievedSearchHistory = localStorage.getItem("searchHistory");
-  const searchHistoryArray = JSON.parse(retrievedSearchHistory);
-  console.log("LOCAAAAAAAAAAAAAL ARAAAAAAAAAAAY");
-  console.log(searchHistoryArray);
-  // end of localStorage
-
   axios.get(`https://api.github.com/users/${slug}/repos`).then(
     (response) => {
       let user = response.data;
