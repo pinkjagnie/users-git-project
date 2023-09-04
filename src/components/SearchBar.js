@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react";
+import Link from "next/link";
 import axios from "axios";
 
 import UsersRepo from "./UsersRepo";
 
 import { SlMagnifier } from "react-icons/sl";
+import { AiOutlineHistory } from "react-icons/ai";
 
 const SearchBar = () => {
   const searchRef = useRef();
@@ -54,6 +56,14 @@ const SearchBar = () => {
           <SlMagnifier size={30} className="text-gray-600" />
         </button>
       </div>
+      {/* search history */}
+      <Link
+        href="/search-history"
+        className="w-[200px] mx-auto mt-4 py-2 px-6 flex items-center justify-around bg-gray-200 border-2 border-gray-900 rounded-md cursor-pointer hover:bg-gray-900 hover:text-gray-200"
+      >
+        <AiOutlineHistory className="text-2xl" />
+        <span>Search history</span>
+      </Link>
 
       {/* Response Msg - failed */}
       {responseMsg && (
