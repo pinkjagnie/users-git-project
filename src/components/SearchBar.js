@@ -14,6 +14,8 @@ const SearchBar = () => {
 
   const searchHandler = (event) => {
     event.preventDefault();
+    setResponseMsg("");
+    setUsersRepo("");
 
     let user = searchRef.current.value;
 
@@ -27,26 +29,33 @@ const SearchBar = () => {
   };
 
   const searchGithubUser = (user) => {
-    setResponseMsg("");
+    // adding to localStorage
+    let searchHistoryJSON = localStorage.getItem("searchHistory");
+    let searchHistoryList = [];
+
+    if (searchHistoryJSON) {
+      searchHistoryList = JSON.parse(searchHistoryJSON);
+    }
+    // end of localStorage
+
     axios.get(`/api/users/get/${user}`).then(
       (response) => {
-        setUsersRepo(response);
-
-        // adding to localStorage
-        let searchHistoryJSON = localStorage.getItem("searchHistory");
-        let searchHistoryList = [];
-
-        if (searchHistoryJSON) {
-          searchHistoryList = JSON.parse(searchHistoryJSON);
+        if (response.data.length === 0) {
+          setResponseMsg(
+            `No data. This user - ${user} - does not have any public repositories`
+          );
+          // adding to localStorage
+          searchHistoryList.push(user);
+        } else {
+          setUsersRepo(response);
+          // adding to localStorage
+          searchHistoryList.push(response.data[0].owner.login);
         }
-
-        searchHistoryList.push(response.data[0].owner.login);
-
+        // adding to localStorage
         localStorage.setItem(
           "searchHistory",
           JSON.stringify(searchHistoryList)
         );
-        // end of localStorage
       },
       (error) => {
         setResponseMsg(error.response.data);
