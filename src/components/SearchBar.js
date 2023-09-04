@@ -1,11 +1,14 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 
+import UsersRepo from "./UsersRepo";
+
 import { SlMagnifier } from "react-icons/sl";
 
 const SearchBar = () => {
   const searchRef = useRef();
   const [responseMsg, setResponseMsg] = useState("");
+  const [usersRepo, setUsersRepo] = useState();
 
   const searchHandler = (event) => {
     event.preventDefault();
@@ -26,6 +29,7 @@ const SearchBar = () => {
     axios.get(`/api/users/get/${user}`).then(
       (response) => {
         console.log(response);
+        setUsersRepo(response);
       },
       (error) => {
         console.log(error);
@@ -51,12 +55,15 @@ const SearchBar = () => {
         </button>
       </div>
 
-      {/* Response Msg */}
+      {/* Response Msg - failed */}
       {responseMsg && (
         <p className="w-[60%] mx-auto text-xl font-bold italic text-rose-950 text-center pt-8">
           {responseMsg}
         </p>
       )}
+
+      {/* Response - succed */}
+      {usersRepo && <UsersRepo usersRepo={usersRepo} />}
     </div>
   );
 };
