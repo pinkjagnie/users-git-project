@@ -32,14 +32,23 @@ const SearchBar = () => {
       (response) => {
         console.log(response);
         setUsersRepo(response);
+
         // adding to localStorage
-        const searchHistoryList = [];
+        let searchHistoryJSON = localStorage.getItem("searchHistory");
+        let searchHistoryList = [];
+
+        if (searchHistoryJSON) {
+          searchHistoryList = JSON.parse(searchHistoryJSON);
+        }
+
         searchHistoryList.push(response.data[0].owner.login);
 
-        const searchHistoryJSON = JSON.stringify(searchHistoryList);
-
-        localStorage.setItem("searchHistory", searchHistoryJSON);
+        localStorage.setItem(
+          "searchHistory",
+          JSON.stringify(searchHistoryList)
+        );
         // end of localStorage
+        console.log(searchHistoryList);
       },
       (error) => {
         console.log(error);
