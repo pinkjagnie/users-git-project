@@ -16,7 +16,7 @@ const SearchHistory = () => {
   }, []);
 
   return (
-    <div className="w-[50%] mx-auto">
+    <div className="w-[50%] mx-auto pb-10">
       {searchArray === null ? (
         <p className="text-center text-lg font-bold py-4 text-rose-950">
           Search history is empty
