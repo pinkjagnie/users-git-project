@@ -17,9 +17,12 @@ const SingleRepo = ({ repo }) => {
         </div>
       </div>
       {/* forked */}
-      <div className="flex items-center justify-around">
-        <BiGitRepoForked />
-        <span>{repo.forks_count} time(s)</span>
+      <div className="text-sm pr-2">
+        <p className="text-center">Forked:</p>
+        <div className="flex items-center justify-around text-center">
+          <BiGitRepoForked />
+          <span>{repo.forks_count} time(s)</span>
+        </div>
       </div>
       {/* link */}
       <Link
