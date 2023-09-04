@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import SingleRepo from "./SingleRepo";
+
 const UsersRepo = ({ usersRepo }) => {
   let repoNumber;
 
@@ -12,7 +14,7 @@ const UsersRepo = ({ usersRepo }) => {
   }
 
   return (
-    <div className="w-[80%] mx-auto pt-10">
+    <div className="w-[80%] mx-auto py-10">
       <p className="text-xl font-bold text-center">
         List of repositories for the user:
       </p>
@@ -37,6 +39,9 @@ const UsersRepo = ({ usersRepo }) => {
           </Link>
         </div>
       </div>
+      {usersRepo.data.map((repo) => {
+        return <SingleRepo repo={repo} key={repo.id} />;
+      })}
     </div>
   );
 };
