@@ -3,6 +3,7 @@ import { Inter } from "@next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
+import ThemeToggler from "@/components/ui/ThemeToggler";
 import SearchBar from "@/components/SearchBar";
 
 import { FiGithub } from "react-icons/fi";
@@ -16,8 +17,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-slate-50 min-h-screen">
-        <div className="flex items-center justify-around w-[90%] lg:w-[750px] mx-auto pt-12">
+      <main className="bg-slate-50 dark:bg-slate-800 min-h-screen">
+        <ThemeToggler />
+        <div className="flex items-center justify-around w-[90%] lg:w-[750px] mx-auto pt-12 text-slate-900 dark:text-slate-50">
           <FiGithub className="text-4xl font-bold" />
           <h1 className="text-center text-3xl font-bold">
             Find a Github user and list all their repositories

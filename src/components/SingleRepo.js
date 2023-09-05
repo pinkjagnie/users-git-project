@@ -7,7 +7,7 @@ import { FiExternalLink } from "react-icons/fi";
 
 const SingleRepo = ({ repo }) => {
   return (
-    <div className="flex items-center justify-between w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] mx-auto my-4 px-6 py-4 rounded-sm border-2 border-gray-700">
+    <div className="flex items-center justify-between w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] mx-auto my-4 px-6 py-4 rounded-sm border-2 border-gray-700 dark:border-gray-500">
       {/* basic data */}
       <div className="w-[60%] flex items-center justify-between">
         <PiGithubLogoDuotone className="text-5xl" />

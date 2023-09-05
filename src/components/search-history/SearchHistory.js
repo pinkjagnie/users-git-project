@@ -24,7 +24,10 @@ const SearchHistory = () => {
       ) : (
         searchArray.map((searchPoint, index) => {
           return (
-            <div key={index} className="flex items-center">
+            <div
+              key={index}
+              className="flex items-center text-slate-900 dark:text-slate-200"
+            >
               <TbPoint />
               {searchPoint}
             </div>

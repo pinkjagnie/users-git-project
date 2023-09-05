@@ -18,7 +18,7 @@ const ThemeToggler = () => {
   }, [isDarkMode]);
 
   const toggleThemeHandler = () => {
-    setIsDarkMode((prevState) => !prevState);
+    setIsDarkMode(!isDarkMode);
   };
 
   return (

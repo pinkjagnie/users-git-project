@@ -14,7 +14,7 @@ const UsersRepo = ({ usersRepo }) => {
   }
 
   return (
-    <div className="w-[80%] mx-auto py-10">
+    <div className="w-[80%] mx-auto py-10 text-slate-900 dark:text-slate-200">
       <p className="text-xl font-bold text-center">
         List of repositories for the user:
       </p>
