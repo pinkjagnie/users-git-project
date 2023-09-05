@@ -5,8 +5,6 @@ import SingleFork from "@/components/forks/SingleFork";
 import GoHome from "@/components/ui/GoHome";
 
 const forksSubpage = (props) => {
-  console.log(props.forksList);
-
   let listedForks;
 
   if (props.forksList.length === 0) {
@@ -40,8 +38,6 @@ export async function getServerSideProps(context) {
   const { params } = context;
   const { slug } = params;
 
-  console.log(slug);
-
   const user = slug[0];
   const repo = slug[1];
 
@@ -52,8 +48,6 @@ export async function getServerSideProps(context) {
       "Content-Type": "application/json",
     },
   });
-
-  console.log(res);
 
   let forksList = await res.json();
 
