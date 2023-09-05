@@ -2,6 +2,7 @@ import React from "react";
 
 import ThemeToggler from "@/components/ui/ThemeToggler";
 import SingleFork from "@/components/forks/SingleFork";
+import GoHome from "@/components/ui/GoHome";
 
 const forksSubpage = (props) => {
   console.log(props.forksList);
@@ -16,6 +17,7 @@ const forksSubpage = (props) => {
       {props.forksList.map((fork) => {
         return <SingleFork key={fork.id} fork={fork} />;
       })}
+      <GoHome />
     </section>
   );
 };
