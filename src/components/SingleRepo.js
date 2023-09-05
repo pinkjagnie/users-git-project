@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import axios from "axios";
 
@@ -8,12 +9,15 @@ import { BiGitRepoForked } from "react-icons/bi";
 import { FiExternalLink } from "react-icons/fi";
 
 const SingleRepo = ({ repo }) => {
+  const router = useRouter();
+
   const getForksInfo = (user, repo) => {
     console.log("user " + user);
     console.log("repo " + repo);
     axios.get(`/api/users/getForks/${user}/${repo}`).then(
       (response) => {
         console.log(response);
+        router.push(`/forks/${user}/${repo}`);
       },
       (error) => {
         console.log(error.response.data);
