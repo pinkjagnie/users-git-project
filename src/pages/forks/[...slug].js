@@ -41,7 +41,7 @@ export async function getServerSideProps(context) {
   const user = slug[0];
   const repo = slug[1];
 
-  let url = `${process.env.NEXT_BASE_URL}/api/users/getForks/${user}/${repo}`;
+  let url = `https://users-git-project.vercel.app/api/users/getForks/${user}/${repo}`;
 
   let res = await fetch(url, {
     headers: {
