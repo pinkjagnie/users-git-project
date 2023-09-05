@@ -1,11 +1,26 @@
 import React from "react";
 import Link from "next/link";
 
+import axios from "axios";
+
 import { PiGithubLogoDuotone } from "react-icons/pi";
 import { BiGitRepoForked } from "react-icons/bi";
 import { FiExternalLink } from "react-icons/fi";
 
 const SingleRepo = ({ repo }) => {
+  const getForksInfo = (user, repo) => {
+    console.log("user " + user);
+    console.log("repo " + repo);
+    axios.get(`/api/users/getForks/${user}/${repo}`).then(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error.response.data);
+      }
+    );
+  };
+
   return (
     <div className="w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] mx-auto my-4 px-6 py-4 rounded-sm border-2 border-gray-700 dark:border-gray-500">
       {/* TOP PART */}
@@ -41,7 +56,12 @@ const SingleRepo = ({ repo }) => {
           </div>
         </div>
         {/* more about */}
-        <button className="flex items-center justify-between gap-2 text-sm italic cursor-pointer px-4 py-2 rounded-sm border-2 bg-gray-200 dark:text-gray-800">
+        <button
+          className="flex items-center justify-between gap-2 text-sm italic cursor-pointer px-4 py-2 rounded-sm border-2 bg-gray-200 dark:text-gray-800"
+          onClick={() => {
+            getForksInfo(repo.owner.login, repo.name);
+          }}
+        >
           <FiExternalLink /> More info about forks
         </button>
       </div>
