@@ -7,6 +7,20 @@ import GoHome from "@/components/ui/GoHome";
 const forksSubpage = (props) => {
   console.log(props.forksList);
 
+  let listedForks;
+
+  if (props.forksList.length === 0) {
+    listedForks = (
+      <p className="w-[90%] mx-auto text-center text-lg font-medium italic text-slate-900 dark:text-slate-200">
+        This repo has no forks
+      </p>
+    );
+  } else {
+    listedForks = props.forksList.map((fork) => {
+      return <SingleFork key={fork.id} fork={fork} />;
+    });
+  }
+
   return (
     <section className="min-h-screen bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-200">
       <ThemeToggler />
@@ -14,9 +28,7 @@ const forksSubpage = (props) => {
         Here is a list of two most recent forks for repo {props.slug[1]} - user{" "}
         {props.slug[0]}
       </h1>
-      {props.forksList.map((fork) => {
-        return <SingleFork key={fork.id} fork={fork} />;
-      })}
+      {listedForks}
       <GoHome />
     </section>
   );
