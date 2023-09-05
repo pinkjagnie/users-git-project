@@ -18,7 +18,7 @@ const UsersRepo = ({ usersRepo }) => {
       <p className="text-xl font-bold text-center">
         List of repositories for the user:
       </p>
-      <div className="flex items-center justify-between w-[30%] mx-auto pt-8">
+      <div className="flex items-center justify-center pt-8">
         <Image
           src={usersRepo.data[0].owner.avatar_url}
           height={50}
@@ -26,7 +26,7 @@ const UsersRepo = ({ usersRepo }) => {
           alt={usersRepo.data[0].owner.login}
           className="rounded-full border-2 border-gray-400"
         />
-        <div className="flex-grow pl-4">
+        <div className="pl-4">
           <p className="font-bold text-lg">{usersRepo.data[0].owner.login}</p>
           <span className="block text-xs">{repoNumber}</span>
           <Link
